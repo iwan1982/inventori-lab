@@ -102,6 +102,30 @@ class User extends CI_Controller
     $this->load->view('user/tabel/tabel_barangkeluar',$data);
     $this->load->view('user/templates/footer.php');
   }
+  ####################################
+        // DATA ALATPERAGA MASUK
+  ####################################
+
+  public function tabel_alatperaga()
+  {
+    $this->load->view('user/templates/header.php');
+    $data['list_data'] = $this->M_user->select('tb_alat_peraga');
+    $this->load->view('user/tabel/tabel_alatperaga',$data);
+    $this->load->view('user/templates/footer.php');
+  }
+
+
+  ####################################
+        // DATA BARANG KELUAR
+  ####################################
+
+  public function tabel_alatperaga_barangkeluar()
+  {
+    $this->load->view('user/templates/header.php');
+    $data['list_data'] = $this->M_user->select('tb_alatperaga_keluar');
+    $this->load->view('user/tabel/tabel_alatperagakeluar',$data);
+    $this->load->view('user/templates/footer.php');
+  }
 
 }
 

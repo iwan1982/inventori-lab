@@ -1,10 +1,9 @@
-echo "# inventori-lab" >> README.md
-git init
-git add README.md
-git commit -m "first commit"
-git branch -M main
-git remote add origin https://github.com/iwan1982/inventori-lab.git
-git push -u origin main
+untuk menggunakan aplikasi ini bisa menggunakan password
+
 
 \\ username : admin
 \\ password : admin
+
+
+\\ username : laboran
+\\ password : Mitra#1234

@@ -199,7 +199,7 @@
             <li><a href="<?php echo base_url()?>assets/web_admin/pages/UI/modals.html"><i class="fa fa-circle-o"></i> Modals</a></li>
           </ul>
         </li> -->
-        <li class="treeview active">
+        <li class="treeview">
           <a href="#">
             <i class="fa fa-edit"></i> <span>Inventaris Lab</span>
             <span class="pull-right-container">
@@ -207,7 +207,7 @@
             </span>
           </a>
           <ul class="treeview-menu">
-            <li class="active"><a href="<?php echo base_url('admin/form_alatperaga')?>"><i class="fa fa-circle-o"></i> Tambah Alat Peraga</a></li>
+            <li><a href="<?php echo base_url('admin/form_alatperaga')?>"><i class="fa fa-circle-o"></i> Tambah Alat Peraga</a></li>
             <li><a href="<?php echo base_url('admin/form_alatnonperaga')?>"><i class="fa fa-circle-o"></i> Tambah Data Alat Non Peraga</a></li>
           </ul>
         </li>
@@ -236,7 +236,7 @@
             <li><a href="<?= base_url('admin/tabel_alatnonperaga')?>"><i class="fa fa-circle-o"></i> Tabel Alat Non Peraga</a></li>
             <li><a href="<?= base_url('admin/tabel_satuan')?>"><i class="fa fa-circle-o"></i> Tabel Satuan</a></li>
           </ul>
-          <li class="treeview">
+          <li class="treeview active">
           <a href="#">
             <i class="fa fa-table"></i> <span>Report Mutasi Keluar</span>
             <span class="pull-right-container">
@@ -245,7 +245,7 @@
           </a>
           <ul class="treeview-menu">
             <li><a href="<?= base_url('admin/tabel_barangkeluar')?>"><i class="fa fa-circle-o"></i> Tabel Barang Keluar</a></li>
-            <li><a href="<?= base_url('admin/tabel_alatperagakeluar')?>"><i class="fa fa-circle-o"></i> Tabel Alat Peraga Keluar</a>
+            <li class="active"><a href="<?= base_url('admin/tabel_alatperagakeluar')?>"><i class="fa fa-circle-o"></i> Tabel Alat Peraga Keluar</a>
             </li>
             <li><a href="<?= base_url('admin/tabel_alatnonperagakeluar')?>"><i class="fa fa-circle-o"></i> Tabel Alat Non Peraga Keluar</a>
             </ul>
@@ -268,129 +268,114 @@
     <!-- Content Header (Page header) -->
     <section class="content-header">
       <h1>
-        Input Alat Peraga
+        Tabel Alat Peraga Keluar
       </h1>
       <ol class="breadcrumb">
-        <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
-        <li><a href="#">Forms</a></li>
-        <li class="active">Data Alat Peraga</li>
+        <li><a href="<?=base_url('admin')?>"><i class="fa fa-dashboard"></i> Home</a></li>
+        <li>Tables</li>
+        <li class="active"><a href="<?=base_url('admin/tabel_alatperagakeluar')?>">Tabel Alat Peraga Keluar</a></li>
       </ol>
     </section>
 
     <!-- Main content -->
     <section class="content">
       <div class="row">
-        <!-- left column -->
-        <div class="col-md-12">
-          <div class="container">
-            <!-- general form elements -->
-          <div class="box box-primary" style="width:94%;">
-            <div class="box-header with-border">
-              <h3 class="box-title"><i class="fa fa-archive" aria-hidden="true"></i> Tambah Data Alat Peraga</h3>
+        <div class="col-xs-12">
+
+          <!-- /.box -->
+          <div class="box">
+            <div class="box-header">
+              <h3 class="box-title"><i class="fa fa-table" aria-hidden="true"></i> Data Alat Peraga</h3>
             </div>
             <!-- /.box-header -->
-            <!-- form start -->
-            <div class="container">
-            <form action="<?=base_url('admin/proses_alatperaga_masuk_insert')?>" role="form" method="post">
+            <div class="box-body">
 
               <?php if($this->session->flashdata('msg_berhasil')){ ?>
-                <div class="alert alert-success alert-dismissible" style="width:91%">
+                <div class="alert alert-success alert-dismissible" style="width:100%">
                     <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
                     <strong>Success!</strong><br> <?php echo $this->session->flashdata('msg_berhasil');?>
                </div>
               <?php } ?>
 
-              <?php if(validation_errors()){ ?>
-              <div class="alert alert-warning alert-dismissible">
-                  <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-                  <strong>Warning!</strong><br> <?php echo validation_errors(); ?>
-             </div>
-            <?php } ?>
-
-              <div class="box-body">
-                <div class="form-group">
-                  <label for="id_transaksi" style="margin-left:220px;display:inline;">Nomor ID</label>
-                  <input type="text" name="id_transaksi" style="margin-left:37px;width:20%;display:inline;" class="form-control" readonly="readonly" value="AP-<?=date("Y");?><?=random_string('numeric', 8);?>">
-                </div>
-                <div class="form-group">
-                  <label for="tanggal" style="margin-left:220px;display:inline;">Tanggal</label>
-                  <input type="text" name="tanggal" style="margin-left:50px;width:20%;display:inline;" class="form-control form_datetime" placeholder="Klik Disini">
-                </div>
-                <div class="form-group" style="margin-bottom:40px;">
-                  <label for="laboratorium" style="margin-left:220px;display:inline;">Lab </label>
-                  <select class="form-control" name="laboratorium" style="margin-left:75px;width:20%;display:inline;">
-                    <option value="">-- Pilih --</option>
-                    <option value="Simulasi Apotek">Simulasi Apotek</option>
-                    <option value="Steril">Steril</option>
-                    <option value="Farmasetika">Farmasetika</option>
-                    <option value="Biologi Farmasi">Biologi Farmasi</option>
-                    <option value="Mikrobiologi">Mikrobiologi</option>
-                    <option value="Kimia">Kimia</option>
-                    <option value="Teknologi Farmasi">Teknologi Farmasi</option>
-                    <option value="Farmakognosi">Farmakognosi</option>
-                    <option value="Farmakologi">Farmakologi</option>
-                    </select>
-                </div>
-                <div class="form-group" style="display:inline-block;">
-                  <label for="nomor_seri" style="width:87%;margin-left: 12px;">Nomor Seri</label>
-                  <input type="text" name="nomor_seri" style="width: 90%;margin-right: 67px;margin-left: 11px;" class="form-control" id="nomor_seri" placeholder="Nomor Seri">
-                </div>
-                <div class="form-group" style="display:inline-block;">
-                  <label for="nama_alat" style="width:73%;">Nama Alat</label>
-                  <input type="text" name="nama_alat" style="width:90%;margin-right: 67px;" class="form-control" id="nama_alat" placeholder="Nama Alat">
-              </div>
-                <div class="form-group" style="display:inline-block;">
-                  <label for="kondisi" style="width:30%;">Kondisi</label>
-                  <select type="text" name="kondisi" style="width:90%;margin-right: 67px;" class="form-control" id="kondisi">
-                    <option value="">-- Pilih --</option>
-                    <option value="Baik">Baik</option>
-                    <option value="Rusak">Rusak</option>
-                    </select> 
-              </div>
-
-              <div class="form-group" style="display:inline-block;">
-                <label for="jumlah" style="width:73%;margin-left:33px;">Jumlah</label>
-                <input type="number" name="jumlah" style="width:41%;margin-left:34px;margin-right:18px;" class="form-control" id="jumlah">
+              <a href="<?=base_url('admin/tabel_alatperaga')?>" style="margin-bottom:10px;" type="button" class="btn btn-primary" name="tambah_data"><i class="fa fa-plus-circle" aria-hidden="true"></i> Tambah Data Keluar</a>
+              <a href="<?=base_url('report/barangKeluarManual')?>" style="margin-bottom:10px;" type="button" class="btn btn-danger" name="laporan_data"><i class="fa fa-file-text" aria-hidden="true"></i> Invoice Manual</a>
+              <table id="example1" class="table table-bordered table-striped">
+                <thead>
+                <tr>
+                  <th>No</th>
+                  <th>ID Transaksi</th>
+                  <th>Tanggal Masuk</th>
+                  <th>Tanggal Keluar</th>
+                  <th>Lab</th>
+                  <th>Nomor Seri</th>
+                  <th>Nama Alat</th>
+                  <th>Merk</th>
+                  <th>Kondisi</th>
+                  <th>Penjab</th>
+                  <th>NIM</th>
+                  <th>No. HP</th>
+                  <th>Jumlah</th>
+                  <th>Tanggal Kembali</th>
+                  <th>Status Kembali</th>
+                  <th>Invoice</th>
+                  <!-- <th></th> -->
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                  <?php if(is_array($list_data)){ ?>
+                  <?php $no = 1;?>
+                  <?php foreach($list_data as $dd): ?>
+                    <td><?=$no?></td>
+                    <td><?=$dd->id_transaksi?></td>
+                    <td><?=$dd->tanggal_masuk?></td>
+                    <td><?=$dd->tanggal_keluar?></td>
+                    <td><?=$dd->laboratorium?></td>
+                    <td><?=$dd->nomor_seri?></td>
+                    <td><?=$dd->nama_alat?></td>
+                    <td><?=$dd->merk?></td>
+                    <td><?=$dd->kondisi?></td>
+                    <td><?=$dd->pj?></td>
+                    <td><?=$dd->nim?></td>
+                    <td><?=$dd->hp?></td>
+                    <td><?=$dd->jumlah?></td>
+                    <td><?=$dd->tanggal_kembali?></td>
+                    <td><?=$dd->sdh_kembali?></td>
+                    <td><a type="button" class="btn btn-danger btn-report"  href="<?=base_url('report/alatperagaKeluar/'.$dd->id_transaksi.'/'.$dd->tanggal_keluar)?>" name="btn_report" style="margin:auto;"><i class="fa fa-file-text" aria-hidden="true"></i></a></td>
+                </tr>
+              <?php $no++; ?>
+              <?php endforeach;?>
+              <?php }else { ?>
+                    <td colspan="7" align="center"><strong>Data Kosong</strong></td>
+              <?php } ?>
+                </tbody>
+                <tfoot>
+                <tr>
+                  <th>No</th>
+                  <th>ID Transaksi</th>
+                  <th>Tanggal Masuk</th>
+                  <th>Tanggal Keluar</th>
+                  <th>Lab</th>
+                  <th>Nomor Seri</th>
+                  <th>Nama Alat</th>
+                  <th>Merk</th>
+                  <th>Kondisi</th>
+                  <th>Penjab</th>
+                  <th>NIM</th>
+                  <th>No. HP</th>
+                  <th>Jumlah</th>
+                  <th>Tanggal Kembali</th>
+                  <th>Status Kembali</th>
+                  <th>Invoice</th>
+                </tr>
+                </tfoot>
+              </table>
             </div>
-            <div class="form-group" style="display:inline-block;">
-              <button type="reset" class="btn btn-basic" name="btn_reset" style="width:95px;margin-left:-70px;"><i class="fa fa-eraser" aria-hidden="true"></i> Reset</button>
-            </div>
-              <!-- /.box-body -->
-              <div class="box-footer" style="width:93%;">
-                <a type="button" class="btn btn-default" style="width:10%;margin-right:26%" onclick="history.back(-1)" name="btn_kembali"><i class="fa fa-arrow-left" aria-hidden="true"></i> Kembali</a>
-                <a type="button" class="btn btn-info" style="width:14%;margin-right:29%" href="<?=base_url('admin/tabel_alatperaga')?>" name="btn_listbarang"><i class="fa fa-table" aria-hidden="true"></i> Lihat List Barang</a>
-                <button type="submit" style="width:20%" class="btn btn-success"><i class="fa fa-check" aria-hidden="true"></i> Submit</button>
-              </div>
-            </form>
+            <!-- /.box-body -->
           </div>
-          </div>
-          <!-- /.box -->
-
-          <!-- Form Element sizes -->
-
-          <!-- /.box -->
 
 
-          <!-- /.box -->
-
-          <!-- Input addon -->
-
-          <!-- /.box -->
-
-        </div>
-        <!--/.col (left) -->
-        <!-- right column -->
-        <!-- <div class="col-md-6">
-          <!-- Horizontal Form -->
-
-          <!-- /.box -->
-          <!-- general form elements disabled -->
-
-          <!-- /.box -->
-
-        </div>
-        </div>
-        <!--/.col (right) -->
+        <!-- /.col -->
       </div>
       <!-- /.row -->
     </section>
@@ -402,6 +387,7 @@
       <b>Version</b> 2.4.0
     </div>
     <strong>Copyright &copy; <?=date('Y')?></strong>
+    
   </footer>
 
   <!-- Control Sidebar -->
@@ -597,30 +583,56 @@
   <!-- Add the sidebar's background. This div must be placed
        immediately after the control sidebar -->
   <div class="control-sidebar-bg"></div>
-  </div>
-  <!-- ./wrapper -->
+</div>
+<!-- ./wrapper -->
 
-  <!-- jQuery 3 -->
-  <script src="<?php echo base_url()?>assets/web_admin/bower_components/jquery/dist/jquery.min.js"></script>
-  <!-- Bootstrap 3.3.7 -->
-  <script src="<?php echo base_url()?>assets/web_admin/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
-  <!-- FastClick -->
-  <script src="<?php echo base_url()?>assets/web_admin/bower_components/fastclick/lib/fastclick.js"></script>
-  <!-- AdminLTE App -->
-  <script src="<?php echo base_url()?>assets/web_admin/dist/js/adminlte.min.js"></script>
-  <script src="<?php echo base_url()?>assets/datetimepicker/js/bootstrap-datetimepicker.min.js"></script>
-  <!-- AdminLTE for demo purposes -->
-  <script src="<?php echo base_url()?>assets/web_admin/dist/js/demo.js"></script>
-
-  <script type="text/javascript">
-      $(".form_datetime").datetimepicker({
-        format: 'dd/mm/yyyy',
-        autoclose: true,
-        todayBtn: true,
-        pickTime: false,
-        minView: 2,
-        maxView: 4,
+<!-- jQuery 3 -->
+<script src="<?php echo base_url()?>assets/web_admin/bower_components/jquery/dist/jquery.min.js"></script>
+<script src="<?php echo base_url()?>assets/sweetalert/dist/sweetalert.min.js"></script>
+<!-- Bootstrap 3.3.7 -->
+<script src="<?php echo base_url()?>assets/web_admin/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+<!-- DataTables -->
+<script src="<?php echo base_url()?>assets/web_admin/bower_components/datatables.net/js/jquery.dataTables.min.js"></script>
+<script src="<?php echo base_url()?>assets/web_admin/bower_components/datatables.net-bs/js/dataTables.bootstrap.min.js"></script>
+<!-- SlimScroll -->
+<script src="<?php echo base_url()?>assets/web_admin/bower_components/jquery-slimscroll/jquery.slimscroll.min.js"></script>
+<!-- FastClick -->
+<script src="<?php echo base_url()?>assets/web_admin/bower_components/fastclick/lib/fastclick.js"></script>
+<!-- AdminLTE App -->
+<script src="<?php echo base_url()?>assets/web_admin/dist/js/adminlte.min.js"></script>
+<!-- AdminLTE for demo purposes -->
+<script src="<?php echo base_url()?>assets/web_admin/dist/js/demo.js"></script>
+<!-- page script -->
+<script>
+jQuery(document).ready(function($){
+      $('.btn-delete').on('click',function(){
+          var getLink = $(this).attr('href');
+          swal({
+                  title: 'Delete Data',
+                  text: 'Yakin Ingin Menghapus Data ?',
+                  html: true,
+                  confirmButtonColor: '#d9534f',
+                  showCancelButton: true,
+                  },function(){
+                  window.location.href = getLink
+              });
+          return false;
       });
-  </script>
-  </body>
-  </html>
+  });
+
+  $(function () {
+    $('#example1').DataTable();
+    $('#example2').DataTable({
+      'paging'      : true,
+      'lengthChange': false,
+      'searching'   : false,
+      'ordering'    : true,
+      'info'        : true,
+      'autoWidth'   : false
+    })
+  });
+
+
+</script>
+</body>
+</html>

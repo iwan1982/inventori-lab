@@ -2134,7 +2134,7 @@ class TCPDF {
 	 * @since 3.0.015 (2008-06-06)
 	 * @see getPageSizeFromFormat()
 	 */
-	protected function setPageFormat($format, $orientation='P') {
+	protected function setPageFormat($format, $orientation='L') {
 		if (!empty($format) AND isset($this->pagedim[$this->page])) {
 			// remove inherited values
 			unset($this->pagedim[$this->page]);
@@ -24740,6 +24740,10 @@ Putting 1 is equivalent to putting 0 and calling Ln() just after. Default value:
 
         return TCPDF_STATIC::file_exists($file);
     }
+
+    
+
+    
 
 } // END OF TCPDF CLASS
 

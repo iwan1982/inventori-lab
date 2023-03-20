@@ -238,7 +238,7 @@
           </ul>
           <li class="treeview active">
           <a href="#">
-            <i class="fa fa-table"></i> <span>Report Mutasi Keluar</span>
+            <i class="fa fa-sign-out"></i> <span>Report Mutasi Keluar</span>
             <span class="pull-right-container">
               <i class="fa fa-angle-left pull-right"></i>
             </span>
@@ -248,6 +248,18 @@
             <li><a href="<?= base_url('admin/tabel_alatperagakeluar')?>"><i class="fa fa-circle-o"></i> Tabel Alat Peraga Keluar</a>
             </li>
             <li class="active"><a href="<?= base_url('admin/tabel_alatnonperagakeluar')?>"><i class="fa fa-circle-o"></i> Tabel Alat Non Peraga Keluar</a>
+            </ul>
+            <li class="treeview">
+          <a href="#">
+            <i class="fa fa-sign-in"></i> <span>Report Alat Kembali</span>
+            <span class="pull-right-container">
+              <i class="fa fa-angle-left pull-right"></i>
+            </span>
+          </a>
+          <ul class="treeview-menu">
+            <li><a href="<?= base_url('admin/tabel_alatperagakembali')?>"><i class="fa fa-circle-o"></i> Tabel Alat Peraga Kembali</a>
+            </li>
+            <li><a href="<?= base_url('admin/tabel_alatnonperagakembali')?>"><i class="fa fa-circle-o"></i> Tabel Alat Non Peraga Kembali</a>
             </ul>
 
         <li class="header">LABELS</li>
@@ -298,7 +310,7 @@
               <?php } ?>
 
               <a href="<?=base_url('admin/tabel_alatnonperaga')?>" style="margin-bottom:10px;" type="button" class="btn btn-primary" name="tambah_data"><i class="fa fa-plus-circle" aria-hidden="true"></i> Tambah Data Keluar</a>
-              <a href="<?=base_url('report/barangKeluarManual')?>" style="margin-bottom:10px;" type="button" class="btn btn-danger" name="laporan_data"><i class="fa fa-file-text" aria-hidden="true"></i> Invoice Manual</a>
+              <a href="<?=base_url('report/alatnonperagaKeluar2')?>" style="margin-bottom:10px;" type="button" class="btn btn-danger" name="laporan_data"><i class="fa fa-file-text" aria-hidden="true"></i> Recap Laporan </a>
               <table id="example1" class="table table-bordered table-striped">
                 <thead>
                 <tr>
@@ -314,9 +326,8 @@
                   <th>NIM</th>
                   <th>No. HP</th>
                   <th>Jumlah</th>
-                  <th>Tanggal Kembali</th>
-                  <th>Sudah Kembali</th>
                   <th>Invoice</th>
+                  <th>Kembali</th>
                   <!-- <th></th> -->
                 </tr>
                 </thead>
@@ -337,9 +348,8 @@
                     <td><?=$dd->nim?></td>
                     <td><?=$dd->hp?></td>
                     <td><?=$dd->jumlah?></td>
-                    <td><?=$dd->tanggal_kembali?></td>
-                    <td><?=$dd->sdh_kembali?></td>
                     <td><a type="button" class="btn btn-danger btn-report"  href="<?=base_url('report/alatnonperagaKeluar/'.$dd->id_transaksi.'/'.$dd->tanggal_keluar)?>" name="btn_report" style="margin:auto;"><i class="fa fa-file-text" aria-hidden="true"></i></a></td>
+                    <td><a type="button" class="btn btn-info btn-barangkeluar"  href="<?=base_url('admin/alatnonperaga_keluar2/'.$dd->id_transaksi)?>" name="btn_barangkeluar" style="margin:auto;"><i class="fa fa-sign-in" aria-hidden="true"></i></a></td>
                 </tr>
               <?php $no++; ?>
               <?php endforeach;?>
@@ -361,9 +371,8 @@
                   <th>NIM</th>
                   <th>No. HP</th>
                   <th>Jumlah</th>
-                  <th>Tanggal Kembali</th>
-                  <th>Sudah Kembali</th>
                   <th>Invoice</th>
+                  <th>Kembali</th>
                 </tr>
                 </tfoot>
               </table>

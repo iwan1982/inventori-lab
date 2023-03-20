@@ -238,7 +238,7 @@
           </ul>
           <li class="treeview">
           <a href="#">
-            <i class="fa fa-table"></i> <span>Report Mutasi Keluar</span>
+            <i class="fa fa-sign-out"></i> <span>Report Mutasi Keluar</span>
             <span class="pull-right-container">
               <i class="fa fa-angle-left pull-right"></i>
             </span>
@@ -248,6 +248,18 @@
             <li><a href="<?= base_url('admin/tabel_alatperagakeluar')?>"><i class="fa fa-circle-o"></i> Tabel Alat Peraga Keluar</a>
             </li>
             <li><a href="<?= base_url('admin/tabel_alatnonperagakeluar')?>"><i class="fa fa-circle-o"></i> Tabel Alat Non Peraga Keluar</a>
+            </ul>
+            <li class="treeview">
+          <a href="#">
+            <i class="fa fa-sign-in"></i> <span>Report Alat Kembali</span>
+            <span class="pull-right-container">
+              <i class="fa fa-angle-left pull-right"></i>
+            </span>
+          </a>
+          <ul class="treeview-menu">
+            <li><a href="<?= base_url('admin/tabel_alatperagakembali')?>"><i class="fa fa-circle-o"></i> Tabel Alat Peraga Kembali</a>
+            </li>
+            <li><a href="<?= base_url('admin/tabel_alatnonperagakembali')?>"><i class="fa fa-circle-o"></i> Tabel Alat Non Peraga Kembali</a>
             </ul>
 
         <li class="header">LABELS</li>
@@ -318,6 +330,7 @@
                   <th>Jumlah</th>
                   <th>Update</th>
                   <th>Delete</th>
+                  <th>Keluarkan</th>
                   
                 </tr>
                 </thead>
@@ -348,13 +361,16 @@
                 <tfoot>
                 <tr>
                   <th>No</th>
-                  <th>ID_transaksi</th>
+                  <th>ID_Transaksi</th>
                   <th>Tanggal</th>
                   <th>Laboratorium</th>
                   <th>Nomor Seri</th>
                   <th>Nama Alat</th>
                   <th>Kondisi</th>
                   <th>Jumlah</th>
+                  <th>Update</th>
+                  <th>Delete</th>
+                  <th>Keluarkan</th>
                 </tr>
                 </tfoot>
               </table>

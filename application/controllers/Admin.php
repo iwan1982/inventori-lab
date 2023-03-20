@@ -770,7 +770,6 @@ public function tabel_alatnonperaga()
       $nomor_seri  = $this->input->post('nomor_seri',TRUE);
       $nama_alat  = $this->input->post('nama_alat',TRUE);
       $merk   = $this->input->post('merk',TRUE);
-      $tanggal_kembali = $this->input->post('tanggal_kembali',TRUE);
       $kondisi       = $this->input->post('kondisi',TRUE);
       $pj      = $this->input->post('pj',TRUE);
       $nim      = $this->input->post('nim',TRUE);
@@ -786,7 +785,6 @@ public function tabel_alatnonperaga()
               'nomor_seri' => $nomor_seri,
               'nama_alat' => $nama_alat,
               'merk' => $merk,
-              'tanggal_kembali' => $tanggal_kembali,
               'kondisi' => $kondisi,
               'pj' => $pj,
               'nim' => $nim,
@@ -834,6 +832,18 @@ public function tabel_alatnonperaga()
     $this->load->view('admin/perpindahan_barang/form_update_alatnonperaga',$data);
   }
 
+public function alatnonperaga_keluar2()
+  {
+    $uri = $this->uri->segment(3);
+    $where = array( 'id_transaksi' => $uri);
+    $data['list_data'] = $this->M_admin->get_data('tb_alatnonperaga_keluar',$where);
+    $data['list_satuan'] = $this->M_admin->select('tb_satuan');
+    $data['avatar'] = $this->M_admin->get_data_gambar('tb_upload_gambar_user',$this->session->userdata('name'));
+    $this->load->view('admin/perpindahan_barang/form_update_alatnonperaga2',$data);
+  }
+
+
+
 public function proses_data_alatnonperagakeluar()
   {
     $this->form_validation->set_rules('tanggal_keluar','Tanggal Keluar','trim|required');
@@ -876,6 +886,117 @@ public function proses_data_alatnonperagakeluar()
       $this->load->view('perpindahan_barang/form_update_alatnonperaga/'.$id_transaksi);
     }
 }
+
+public function proses_data_alatnonperagakembali()
+  {
+    $this->form_validation->set_rules('tanggal_keluar','Tanggal Keluar','trim|required');
+    if($this->form_validation->run() === TRUE)
+    {
+
+      $id_transaksi = $this->input->post('id_transaksi',TRUE);
+      $tanggal_masuk      = $this->input->post('tanggal',TRUE);
+      $tanggal_keluar = $this->input->post('tanggal_keluar',TRUE);
+      $jenis          = $this->input->post('jenis',TRUE);
+      $nama_alat  = $this->input->post('nama_alat',TRUE);
+      $merk   = $this->input->post('merk',TRUE);
+      $tanggal_kembali = $this->input->post('tanggal_kembali',TRUE);
+      $kondisi       = $this->input->post('kondisi',TRUE);
+      $pj      = $this->input->post('pj',TRUE);
+      $nim      = $this->input->post('nim',TRUE);
+      $hp      = $this->input->post('hp',TRUE);          
+      $jumlah         = $this->input->post('jumlah',TRUE); 
+      
+      $where = array( 'id_transaksi' => $id_transaksi);
+      $data = array(
+              'id_transaksi' => $id_transaksi,
+              'tanggal_masuk' => $tanggal_masuk,
+              'tanggal_keluar' => $tanggal_keluar,
+              'jenis' => $jenis,
+              'nama_alat' => $nama_alat,
+              'merk' => $merk,
+              'tanggal_kembali' => $tanggal_kembali,
+              'kondisi' => $kondisi,
+              'pj' => $pj,
+              'nim' => $nim,
+              'hp' => $hp,
+              'jumlah' => $jumlah
+              
+      );
+        $this->M_admin->insert('tb_alatnonperaga_kembali',$data);
+        $this->session->set_flashdata('msg_berhasil_keluar','Barang sudah kembali');
+        redirect(base_url('admin/tabel_alatnonperagakeluar'));
+    }else {
+      $this->load->view('perpindahan_barang/form_update_alatnonperaga2/'.$id_transaksi);
+    }
 }
 
+public function tabel_alatnonperagakembali()
+  {
+    $data['list_data'] = $this->M_admin->select('tb_alatnonperaga_kembali');
+    $data['avatar'] = $this->M_admin->get_data_gambar('tb_upload_gambar_user',$this->session->userdata('name'));
+    $this->load->view('admin/tabel/tabel_alatnonperagakembali',$data);
+  }
+
+  public function tabel_alatperagakembali()
+  {
+    $data['list_data'] = $this->M_admin->select('tb_alatperaga_kembali');
+    $data['avatar'] = $this->M_admin->get_data_gambar('tb_upload_gambar_user',$this->session->userdata('name'));
+    $this->load->view('admin/tabel/tabel_alatperagakembali',$data);
+  }
+
+public function alatperaga_keluar2()
+  {
+    $uri = $this->uri->segment(3);
+    $where = array( 'id_transaksi' => $uri);
+    $data['list_data'] = $this->M_admin->get_data('tb_alatperaga_keluar',$where);
+    $data['list_satuan'] = $this->M_admin->select('tb_satuan');
+    $data['avatar'] = $this->M_admin->get_data_gambar('tb_upload_gambar_user',$this->session->userdata('name'));
+    $this->load->view('admin/perpindahan_barang/form_update_alatperaga2',$data);
+  }
+
+public function proses_data_alatperagakembali()
+  {
+    $this->form_validation->set_rules('tanggal_keluar','Tanggal Keluar','trim|required');
+    if($this->form_validation->run() === TRUE)
+    {
+
+      $id_transaksi = $this->input->post('id_transaksi',TRUE);
+      $tanggal_masuk      = $this->input->post('tanggal_masuk',TRUE);
+      $tanggal_keluar = $this->input->post('tanggal_keluar',TRUE);
+      $laboratorium = $this->input->post('laboratorium',TRUE);
+      $nomor_seri  = $this->input->post('nomor_seri',TRUE);
+      $nama_alat  = $this->input->post('nama_alat',TRUE);
+      $merk   = $this->input->post('merk',TRUE);
+      $kondisi       = $this->input->post('kondisi',TRUE);
+      $pj      = $this->input->post('pj',TRUE);
+      $nim      = $this->input->post('nim',TRUE);
+      $hp      = $this->input->post('hp',TRUE);          
+      $jumlah         = $this->input->post('jumlah',TRUE); 
+      $tanggal_kembali = $this->input->post('tanggal_kembali',TRUE);
+      
+      $where = array( 'id_transaksi' => $id_transaksi);
+      $data = array(
+              'id_transaksi' => $id_transaksi,
+              'tanggal_masuk' => $tanggal_masuk,
+              'tanggal_keluar' => $tanggal_keluar,
+              'laboratorium' => $laboratorium,
+              'nomor_seri' => $nomor_seri,
+              'nama_alat' => $nama_alat,
+              'merk' => $merk,
+              'kondisi' => $kondisi,
+              'pj' => $pj,
+              'nim' => $nim,
+              'hp' => $hp,
+              'tanggal_kembali' => $tanggal_kembali,
+              'jumlah' => $jumlah
+              
+      );
+        $this->M_admin->insert('tb_alatperaga_kembali',$data);
+        $this->session->set_flashdata('msg_berhasil_keluar','Barang sudah kembali');
+        redirect(base_url('admin/tabel_alatperagakeluar'));
+    }else {
+      $this->load->view('perpindahan_barang/form_update_alatperaga2/'.$id_transaksi);
+    }
+}
+}
 ?>

@@ -275,17 +275,18 @@
     </section>
     <!-- /.sidebar -->
   </aside>
+
   <!-- Content Wrapper. Contains page content -->
   <div class="content-wrapper">
     <!-- Content Header (Page header) -->
     <section class="content-header">
       <h1>
-        Update Data Barang Masuk
+        Tambah Barang Keluar
       </h1>
       <ol class="breadcrumb">
         <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
-        <li><a href="#">Forms</a></li>
-        <li class="active">General Elements</li>
+        <li><a href="<?=base_url('admin/tabel_alatnonperaga')?>">Tables</a></li>
+        <li class="active">Tambah Barang Keluar</li>
       </ol>
     </section>
 
@@ -298,12 +299,12 @@
             <!-- general form elements -->
           <div class="box box-primary" style="width:94%;">
             <div class="box-header with-border">
-              <h3 class="box-title"><i class="fa fa-archive" aria-hidden="true"></i> Update Data Alat Peraga</h3>
+              <h3 class="box-title"><i class="fa fa-archive" aria-hidden="true"></i> Tambah Alat Non Peraga Keluar</h3>
             </div>
             <!-- /.box-header -->
             <!-- form start -->
             <div class="container">
-            <form action="<?=base_url('admin/proses_alatperaga_masuk_update')?>" role="form" method="post">
+            <form action="<?=base_url('admin/proses_data_alatnonperagakembali')?>" role="form" method="post">
 
               <?php if(validation_errors()){ ?>
               <div class="alert alert-warning alert-dismissible">
@@ -314,49 +315,60 @@
 
               <div class="box-body">
                 <div class="form-group">
-                  <?php foreach($data_barang_update as $d){ ?>
-                  <label for="id_transaksi" style="margin-left:220px;display:inline;">Nomor ID</label>
-                  <input type="text" name="id_transaksi" style="margin-left:37px;width:20%;display:inline;" class="form-control" readonly="readonly" value="<?=$d->id_transaksi?>">
+                  <?php foreach($list_data as $d){ ?>
+                  <label for="id_transaksi" style="margin-left:220px;display:inline;">ID Transaksi</label>
+                  <input type="text" name="id_transaksi" style="margin-left:84px;width:20%;display:inline;" class="form-control" readonly="readonly" value="<?=$d->id_transaksi?>">
                 </div>
                 <div class="form-group">
-                  <label for="tanggal" style="margin-left:220px;display:inline;">Tanggal</label>
-                  <input type="text" name="tanggal" style="margin-left:50px;width:20%;display:inline;" class="form-control" readonly="readonly" value="<?=$d->tanggal?>">
+                  <label for="tanggal" style="margin-left:220px;display:inline;">Tanggal Masuk</label>
+                  <input type="text" name="tanggal" style="margin-left:66px;width:20%;display:inline;" class="form-control" readonly="readonly" value="<?=$d->tanggal_masuk?>">
                 </div>
-                <div class="form-group" style="margin-bottom:40px;">
-                  <label for="laboratorium" style="margin-left:220px;display:inline;">Lab</label>
-                  <select class="form-control" name="laboratorium" style="margin-left:75px;width:20%;display:inline;">
-                    <option value="<?=$d->laboratorium?>"><?=$d->laboratorium?></option>
-                    <option value="">-- Pilih --</option>
-                    <option value="Simulasi Apotek">Simulasi Apotek</option>
-                    <option value="Steril">Steril</option>
-                    <option value="Farmasetika">Farmasetika</option>
-                    <option value="Biologi Farmasi">Biologi Farmasi</option>
-                    <option value="Mikrobiologi">Mikrobiologi</option>
-                    <option value="Kimia">Kimia</option>
-                    <option value="Teknologi Farmasi">Teknologi Farmasi</option>
-                    <option value="Farmakognosi">Farmakognosi</option>
-                    <option value="Farmakologi">Farmakologi</option>
-                    </select>
+                <div class="form-group">
+                  <label for="tanggal_keluar" style="margin-left:220px;display:inline;">Tanggal Kerusakan</label>
+                  <input type="text" name="tanggal_keluar" style="margin-left:40px;width:20%;display:inline;" class="form-control form_datetime" required="" readonly="readonly" value="<?=$d->tanggal_keluar?>">
+                </div>
+                <div class="form-group" style="">
+                  <label for="nama_alat" style="margin-left:220px;display:inline;">Nama Alat</label>
+                  <input type="text" name="nama_alat" style="margin-left:95px;width:20%;display:inline;" class="form-control" readonly="readonly" value="<?=$d->nama_alat?>">
+                </div>
+                <div class="form-group" style="">
+                  <label for="jenis" style="margin-left:220px;display:inline;">Jenis</label>
+                  <input type="text" name="jenis" style="margin-left:125px;width:20%;display:inline;" class="form-control" readonly="readonly" value="<?=$d->jenis?>">
+                </div>
+                <div class="form-group" style="">
+                  <label for="merk" style="margin-left:220px;display:inline;">Merk</label>
+                  <input type="text" name="merk" style="margin-left:125px;width:20%;display:inline;" readonly="readonly" class="form-control" id="merk" value="<?=$d->merk?>">
+                </div>
+                <div class="form-group">
+                  <label for="tanggal_kembali" style="margin-left:220px;display:inline;">Tanggal Kembali</label>
+                  <input type="text" name="tanggal_kembali" style="margin-left:55px;width:20%;display:inline;" class="form-control form_datetime" required="" placeholder="Klik Disini">
                 </div>
                 <div class="form-group" style="display:inline-block;">
-                  <label for="nomor_seri" style="width:87%;margin-left: 12px;">Nomor Seri</label>
-                  <input type="text" name="nomor_seri" required style="width: 90%;margin-right: 67px;margin-left: 11px;" class="form-control" id="nomor_seri" value="<?=$d->nomor_seri?>">
-                </div>
-                <div class="form-group" style="display:inline-block;">
-                  <label for="nama_alat" style="width:73%;">Nama Alat</label>
-                  <input type="text" name="nama_alat" required style="width:90%;margin-right: 67px;" class="form-control" id="nama_alat" value="<?=$d->nama_alat?>">
-              </div>
-                <div class="form-group" style="display:inline-block;">
-                  <label for="kondisi" style="width:30%;">Kondisi</label>
-                  <select type="text" name="kondisi" style="width:90%;margin-right: 67px;" class="form-control" id="kondisi">
-                    <option value="<?=$d->kondisi?>"><?=$d->kondisi?></option>
+                  <label for="kondisi" style="width:100%;">Kondisi</label>
+                  <select class="form-control" name="kondisi" style="width:100%;margin-right:30px;">
                     <option value="Baik">Baik</option>
-                    <option value="Rusak">Rusak</option>
-                    </select> 
+                    <option value="rusak">Rusak</option>
+                    <option value="rusak">Pecah</option>
+                    <option value="rusak">Patah</option>
+                    <option value="rusak">Retak</option>
+                    </select>
               </div>
+                <div class="form-group" style="display:inline-block;">
+                  <label for="pj" style="width:100%;margin-left: 20px;">Penanggung Jawab</label>
+                  <input type="text" name="pj" class="form-control" readonly="readonly" style="width:100%;margin-left: 20px;margin-right: 20px;" id="pj" value="<?=$d->pj?>">
+                    </div>
+              <div class="form-group" style="display:inline-block;">
+                  <label for="nim" style="width:90%; margin-left: 30px">NIM / Kelas</label>
+                  <input type="text" class="form-control" name="nim" readonly="readonly" style="width:90%; margin-left: 30px; margin-right: 10px;" id="nim" value="<?=$d->nim?>">
+                    </div>
+                    <div class="form-group" style="display:inline-block;">
+                  <label for="hp" style="width:90%; margin-left: 30px">No HP</label>
+                  <input type="number" class="form-control" name="hp" readonly="readonly" style="width:90%; margin-left: 30px; margin-right: 10px;" id="hp" value="<?=$d->hp?>">
+                    </div>
+              
               <div class="form-group" style="display:inline-block;">
                 <label for="jumlah" style="width:73%;margin-left:33px;">Jumlah</label>
-                <input type="number" name="jumlah" style="width:41%;margin-left:34px;margin-right:18px;" class="form-control" id="jumlah" value="<?=$d->jumlah?>">
+                <input type="number" name="jumlah" style="width:41%;margin-left:34px;margin-right:18px;" class="form-control" id="jumlah" max="<?=$d->jumlah?>" value="<?=$d->jumlah?>">
             </div>
             <?php } ?>
               <!-- /.box-body -->
@@ -613,7 +625,19 @@
   <script src="<?php echo base_url()?>assets/web_admin/bower_components/fastclick/lib/fastclick.js"></script>
   <!-- AdminLTE App -->
   <script src="<?php echo base_url()?>assets/web_admin/dist/js/adminlte.min.js"></script>
+  <script src="<?php echo base_url()?>assets/datetimepicker/js/bootstrap-datetimepicker.min.js"></script>
   <!-- AdminLTE for demo purposes -->
   <script src="<?php echo base_url()?>assets/web_admin/dist/js/demo.js"></script>
+
+  <script type="text/javascript">
+      $(".form_datetime").datetimepicker({
+        format: 'dd/mm/yyyy',
+        autoclose: true,
+        todayBtn: true,
+        pickTime: false,
+        minView: 2,
+       maxView: 4,
+      });
+  </script>
   </body>
   </html>

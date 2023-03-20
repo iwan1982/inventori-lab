@@ -236,9 +236,9 @@
             <li><a href="<?= base_url('admin/tabel_alatnonperaga')?>"><i class="fa fa-circle-o"></i> Tabel Alat Non Peraga</a></li>
             <li><a href="<?= base_url('admin/tabel_satuan')?>"><i class="fa fa-circle-o"></i> Tabel Satuan</a></li>
           </ul>
-          <li class="treeview">
+          <li class="treeview active">
           <a href="#">
-            <i class="fa fa-table"></i> <span>Report Mutasi Keluar</span>
+            <i class="fa fa-sign-out"></i> <span>Report Mutasi Keluar</span>
             <span class="pull-right-container">
               <i class="fa fa-angle-left pull-right"></i>
             </span>
@@ -247,7 +247,19 @@
             <li><a href="<?= base_url('admin/tabel_barangkeluar')?>"><i class="fa fa-circle-o"></i> Tabel Barang Keluar</a></li>
             <li><a href="<?= base_url('admin/tabel_alatperagakeluar')?>"><i class="fa fa-circle-o"></i> Tabel Alat Peraga Keluar</a>
             </li>
-            <li><a href="<?= base_url('admin/tabel_alatnonperagakeluar')?>"><i class="fa fa-circle-o"></i> Tabel Alat Non Peraga Keluar</a>
+            <li class="active"><a href="<?= base_url('admin/tabel_alatnonperagakeluar')?>"><i class="fa fa-circle-o"></i> Tabel Alat Non Peraga Keluar</a>
+            </ul>
+            <li class="treeview">
+          <a href="#">
+            <i class="fa fa-sign-in"></i> <span>Report Alat Kembali</span>
+            <span class="pull-right-container">
+              <i class="fa fa-angle-left pull-right"></i>
+            </span>
+          </a>
+          <ul class="treeview-menu">
+            <li><a href="<?= base_url('admin/tabel_alatperagakembali')?>"><i class="fa fa-circle-o"></i> Tabel Alat Peraga Kembali</a>
+            </li>
+            <li><a href="<?= base_url('admin/tabel_alatnonperagakembali')?>"><i class="fa fa-circle-o"></i> Tabel Alat Non Peraga Kembali</a>
             </ul>
 
         <li class="header">LABELS</li>
@@ -273,7 +285,7 @@
       <ol class="breadcrumb">
         <li><a href="<?=base_url('admin')?>"><i class="fa fa-dashboard"></i> Home</a></li>
         <li>Tables</li>
-        <li class="active"><a href="<?=base_url('admin/tabel_barangmasuk')?>">Tabel Barang Masuk</li>
+        <li><a href="<?=base_url('admin/tabel_barangmasuk')?>">Tabel Barang Masuk</li>
       </ol>
     </section>
 
@@ -305,7 +317,7 @@
               <?php } ?>
 
               <a href="<?=base_url('admin/form_barangmasuk')?>" style="margin-bottom:10px;" type="button" class="btn btn-primary" name="tambah_data"><i class="fa fa-plus-circle" aria-hidden="true"></i> Tambah Data Masuk</a>
-              <table id="example1" class="table table-bordered table-striped">
+              <table id="example3" class="table table-bordered table-striped">
                 <thead>
                 <tr>
                   <th>No</th>
@@ -611,7 +623,7 @@ jQuery(document).ready(function($){
   });
 
   $(function () {
-    $('#example1').DataTable()
+    $('#example3').DataTable()
     $('#example2').DataTable({
       'paging'      : true,
       'lengthChange': false,
